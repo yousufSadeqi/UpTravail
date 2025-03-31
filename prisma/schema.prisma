@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String          @id @default(cuid())
+  email         String         @unique
+  name          String?
+  title         String?
+  phone         String?
+  location      String?
+  avatar        String?
+  notifications Notification[]
+  wallet        Wallet?
+
+  // Profile fields
+  bio           String?        @db.Text
+  specializations String[]     @default([])
+  languages     Json?          // Store language proficiency as JSON
+  hourlyRate    Float?
+  availability  Boolean        @default(true)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  @@index([email])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  message   String
+  read      Boolean  @default(false)
+  timestamp DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Wallet {
+  id          String    @id @default(cuid())
+  balance     Float     @default(0)
+  dailyLimit  Float     @default(10000)
+  userId      String    @unique
+  user        User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  transactions WalletTransaction[]
+}
+
+model WalletTransaction {
+  id          String    @id @default(cuid())
+  type        String    // deposit, withdrawal, payment
+  amount      Float
+  status      String    // pending, completed, failed
+  description String?
+  reference   String?
+  walletId    String
+  wallet      Wallet    @relation(fields: [walletId], references: [id])
+  userId      String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+}
+
+enum NotificationType {
+  MESSAGE
+  TRANSACTION
+  SYSTEM_ALERT
+} 

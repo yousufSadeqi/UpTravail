@@ -1,0 +1,54 @@
+.overlay {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.overlayVisible {
+  opacity: 1;
+}
+
+.modal {
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.modalVisible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.copyButton {
+  position: relative;
+}
+
+.copyTooltip {
+  position: absolute;
+  right: -8px;
+  top: -24px;
+  background-color: #10B981;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.copyTooltipVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.statusBadge {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.detailRow {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.detailRow:hover {
+  background-color: #F9FAFB;
+} 

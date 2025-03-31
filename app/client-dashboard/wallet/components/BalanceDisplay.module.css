@@ -1,0 +1,153 @@
+.container {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.chartContainer {
+  transform: scale(0.9);
+  opacity: 0;
+  animation: scaleIn 1s ease-out 0.5s forwards;
+}
+
+.centerContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 2s forwards;
+}
+
+.balanceAmount {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+  transform: translateY(10px);
+  animation: slideUp 0.5s ease-out 2s forwards;
+}
+
+.balanceLabel {
+  font-size: 0.875rem;
+  color: #6B7280;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 2.2s forwards;
+}
+
+.actions {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.5s ease-out 2.4s forwards;
+}
+
+.transferButton, .addFundsButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.transferButton {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.transferButton:hover {
+  background-color: var(--primary-color-dark);
+  transform: translateY(-1px);
+}
+
+.addFundsButton {
+  border: 1px solid #E5E7EB;
+  color: #374151;
+}
+
+.addFundsButton:hover {
+  background-color: #F9FAFB;
+  transform: translateY(-1px);
+}
+
+.legend {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 2.6s forwards;
+}
+
+.legendItem {
+  transform: translateY(10px);
+  opacity: 0;
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.legendItem:nth-child(1) { animation-delay: 2.6s; }
+.legendItem:nth-child(2) { animation-delay: 2.7s; }
+.legendItem:nth-child(3) { animation-delay: 2.8s; }
+
+.tooltip {
+  position: absolute;
+  z-index: 10;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background-color: #1F2937;
+  color: white;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  max-width: 18rem;
+  opacity: 0;
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.infoButton {
+  color: #9CA3AF;
+  transition: color 0.2s ease-in-out;
+}
+
+.infoButton:hover {
+  color: #6B7280;
+}
+
+.goalProgress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #6B7280;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 2.2s forwards;
+} 
